@@ -1,11 +1,11 @@
 import React from "react";
-import "./App.css";
-import HogeContainer from "./containers/hogeContainer";
+import "./App.scss";
+import Main from "./containers/main";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <HogeContainer />
+      <Main />
     </div>
   );
 };

@@ -1,15 +1,13 @@
-import actionCreatorFactory, {
-  ActionCreator,
-  Success,
-  Failure
-} from "typescript-fsa";
+import actionCreatorFactory from "typescript-fsa";
 
 const actionCreator = actionCreatorFactory();
 
 export enum ActionTypes {
   REGISTER = "ACTIONS_REGISTER",
+  FETCH = "ACTIONS_FETCH",
+  UPDATE_SEARCH_WORD = "ACTIONS_UPDATE_SEARCH_WORD",
   UPDATE_NAME = "ACTIONS_UPDATE_NAME",
-  UPDATE_EMAIL = "ACTIONS_UPDATE_EMAIL"
+  UPDATE_CONTENT = "ACTIONS_UPDATE_CONTENT"
 }
 
 export enum ActionAsyncTypes {
@@ -18,18 +16,23 @@ export enum ActionAsyncTypes {
   FAILED = "_FAILED"
 }
 
-const register = actionCreator.async<{}, {}, {}>("ACTIONS_REGISTER");
+const register = actionCreator.async<{}, {}, {}>(ActionTypes.REGISTER);
+const fetch = actionCreator.async<{}, {}, {}>(ActionTypes.FETCH);
 
-export interface RegisterActions {
-  startRegister: ActionCreator<{}>;
-  failedRegister: ActionCreator<Failure<{}, {}>>;
-  doneRegister: ActionCreator<Success<{}, {}>>;
-}
+export const postSkillActions = {
+  updateName: actionCreator<string>(ActionTypes.UPDATE_NAME),
+  updateContent: actionCreator<string>(ActionTypes.UPDATE_CONTENT)
+};
 
-export const hogeActions = {
-  updateName: actionCreator<string>("ACTIONS_UPDATE_NAME"),
-  updateEmail: actionCreator<string>("ACTIONS_UPDATE_EMAIL"),
+export const skillSearchActions = {
+  updateSearchWord: actionCreator<string>(ActionTypes.UPDATE_SEARCH_WORD)
+};
+
+export const dictionaryActions = {
   startRegister: register.started,
   failedRegister: register.failed,
-  doneRegister: register.done
+  doneRegister: register.done,
+  startFetch: fetch.started,
+  doneFetch: fetch.done,
+  failedFetch: fetch.failed
 };

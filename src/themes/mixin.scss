@@ -1,0 +1,16 @@
+@import "src/themes/variable.scss";
+
+@mixin commonButton($color, $width, $height: 2rem) {
+  border: 1px solid;
+  padding: 0.5em;
+  width: $width;
+  height: $height;
+  border-radius: 10px;
+  background-color: $color;
+  color: #fff;
+  outline: none;
+}
+
+@mixin mainButton($width, $height: 2rem) {
+  @include commonButton($mainColor, $width, $height);
+}

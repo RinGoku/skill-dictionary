@@ -1,0 +1,38 @@
+.info-list {
+  display: flex;
+}
+
+.info-list__item {
+  flex-basis: calc(100% / 3.1);
+  box-shadow: 2px rgba(0, 0, 0, 0.75);
+}
+
+.input-area {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  margin: 5px auto;
+  padding: 10px;
+  text-align: center;
+  max-width: 900px;
+}
+
+.input-area__item {
+  margin-bottom: 10px;
+}
+
+.input-area__textbox {
+  border-radius: 10px;
+  height: 1.5rem;
+  margin: 0 auto;
+  width: 90vw;
+  max-width: 800px;
+  outline: none;
+}
+
+.input-area__textarea {
+  height: 10rem;
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 800px;
+  border-radius: 10px;
+  outline: none;
+}

@@ -6,7 +6,11 @@ export default function* rootSaga(): IterableIterator<any> {
   yield all([
     takeEvery(
       `${ActionTypes.REGISTER}${ActionAsyncTypes.STARTED}`,
-      dictionarySaga.startRegister
+      dictionarySaga.register
+    ),
+    takeEvery(
+      `${ActionTypes.FETCH}${ActionAsyncTypes.STARTED}`,
+      dictionarySaga.fetch
     )
   ]);
 }

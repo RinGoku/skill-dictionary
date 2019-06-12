@@ -1,32 +1,55 @@
 import { reducerWithInitialState } from "typescript-fsa-reducers";
-import { hogeActions } from "../actions";
+import {
+  postSkillActions,
+  dictionaryActions,
+  skillSearchActions
+} from "../actions";
 
-export interface HogeState {
+export interface PostSkillState {
   name: string;
-  email: string;
+  content: string;
+  searchWord: string;
+  list: any[];
 }
 
-const initialState: HogeState = {
+const initialState: PostSkillState = {
   name: "",
-  email: ""
+  content: "",
+  searchWord: "",
+  list: []
 };
 
 export const hogeReducer = reducerWithInitialState(initialState)
-  .case(hogeActions.updateName, (state, name) => {
+  .case(postSkillActions.updateName, (state, name) => {
     return Object.assign({}, state, { name });
   })
-  .case(hogeActions.updateEmail, (state, email) => {
-    return Object.assign({}, state, { email });
+  .case(postSkillActions.updateContent, (state, content) => {
+    return Object.assign({}, state, { content });
   })
-  .case(hogeActions.startRegister, (state, info: any) => {
+  .case(skillSearchActions.updateSearchWord, (state, searchWord) => {
+    return Object.assign({}, state, { searchWord });
+  })
+  .case(dictionaryActions.startRegister, (state, info: any) => {
     console.log("reducer: register start");
-    return Object.assign({}, state, { name: info.name, email: info.email });
+    return Object.assign({}, state, { name: info.name, content: info.content });
   })
-  .case(hogeActions.failedRegister, (state, info: any) => {
+  .case(dictionaryActions.failedRegister, (state, info: any) => {
     console.log("reducer: register failed");
-    return Object.assign({}, state, { name: info.name, email: info.email });
+    return Object.assign({}, state, { name: info.name, content: info.content });
   })
-  .case(hogeActions.doneRegister, (state, info: any) => {
+  .case(dictionaryActions.doneRegister, (state, info: any) => {
     console.log("reducer: register done");
-    return Object.assign({}, state, { name: info.name, email: info.email });
+    return Object.assign({}, state, { name: info.name, content: info.content });
+  })
+  .case(dictionaryActions.startFetch, (state, info: any) => {
+    console.log("reducer: fetch start");
+    return state;
+  })
+  .case(dictionaryActions.failedFetch, (state, info: any) => {
+    console.log("reducer: fetch failed");
+    return state;
+  })
+  .case(dictionaryActions.doneFetch, (state, info: any) => {
+    console.log("reducer: fetch done");
+    return Object.assign({}, state, { list: info });
   });
