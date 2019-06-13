@@ -19,7 +19,7 @@ const initialState: PostSkillState = {
   list: []
 };
 
-export const hogeReducer = reducerWithInitialState(initialState)
+export const rootReducer = reducerWithInitialState(initialState)
   .case(postSkillActions.updateName, (state, name) => {
     return Object.assign({}, state, { name });
   })

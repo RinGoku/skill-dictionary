@@ -22,7 +22,7 @@ type MainProps = OwnProps;
 const PostSkill: React.SFC<MainProps> = (props: MainProps) => {
   return (
     <React.Fragment>
-      <section className="input-area">
+      <section className="input-area page">
         <div className="input-area__item">
           <input
             type="text"

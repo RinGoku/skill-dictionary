@@ -1,7 +1,7 @@
 @import "src/themes/variable.scss";
 
 @mixin commonButton($color, $width, $height: 2rem) {
-  border: 1px solid;
+  border: 0;
   padding: 0.5em;
   width: $width;
   height: $height;
@@ -11,6 +11,6 @@
   outline: none;
 }
 
-@mixin mainButton($width, $height: 2rem) {
+@mixin mainButton($width, $height: 2.5rem) {
   @include commonButton($mainColor, $width, $height);
 }
