@@ -1,11 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import { hogeReducer, PostSkillState } from "../reducers";
+import { PostSkillState, rootReducer } from "../reducers";
 import createSagaMiddleware from "@redux-saga/core";
 import rootSaga from "../sagas";
 import { createLogger } from "redux-logger";
 
 export type AppState = {
-  hoge: PostSkillState;
+  postSkill: PostSkillState;
 };
 const logger = createLogger({
   diff: true,
@@ -15,7 +15,7 @@ const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
   const store = createStore(
     combineReducers<AppState>({
-      hoge: hogeReducer
+      postSkill: rootReducer
     }),
     applyMiddleware(sagaMiddleware, logger)
   );

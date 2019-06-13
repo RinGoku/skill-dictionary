@@ -12,8 +12,12 @@
     "monokai": "^1.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-fontawesome": "^1.6.1",
     "react-redux": "^7.0.3",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-transition-group": "^4.1.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.2",
@@ -46,6 +50,9 @@
     "@types/highlight.js": "^9.12.3",
     "@types/marked": "^0.6.5",
     "@types/react-redux": "^7.0.9",
+    "@types/react-router": "^5.0.1",
+    "@types/react-router-dom": "^4.3.3",
+    "@types/react-transition-group": "^2.9.2",
     "@types/redux-logger": "^3.0.7",
     "node-sass": "^4.12.0"
   }
