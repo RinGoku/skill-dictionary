@@ -6,13 +6,16 @@ import Markdown from "../markdown/markdown";
 
 interface SkillInfo {
   name: string;
+  tag: string;
   content: string;
 }
 
 interface OwnProps {
   name: string;
+  tag: string;
   content: string;
   updateName: (v: string) => void;
+  updateTag: (v: string) => void;
   updateContent: (v: string) => void;
   register: (v: SkillInfo) => void;
 }
@@ -33,6 +36,15 @@ const PostSkill: React.SFC<MainProps> = (props: MainProps) => {
           />
         </div>
         <div className="input-area__item">
+          <input
+            type="text"
+            className="input-area__textbox"
+            placeholder="タグ"
+            value={props.tag}
+            onChange={e => props.updateTag(e.target.value)}
+          />
+        </div>
+        <div className="input-area__item">
           <textarea
             className="input-area__textarea"
             placeholder="内容"
@@ -48,7 +60,11 @@ const PostSkill: React.SFC<MainProps> = (props: MainProps) => {
             type="button"
             className="input-area__register-button"
             onClick={e =>
-              props.register({ name: props.name, content: props.content })
+              props.register({
+                name: props.name,
+                tag: props.tag,
+                content: props.content
+              })
             }
           >
             登録

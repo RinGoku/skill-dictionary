@@ -1,16 +1,8 @@
 @import "src/themes/variable.scss";
 @import "src/themes/mixin.scss";
 
-.info-list {
-  display: flex;
-  &__item {
-    flex-basis: calc(100% / 3.1);
-    box-shadow: 2px rgba(0, 0, 0, 0.75);
-  }
-}
-
 .input-area {
-  width: 90vw;
+  width: 95vw;
   max-width: 900px;
   right: 0;
   left: 0;

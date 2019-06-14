@@ -9,6 +9,7 @@ const dictionarySaga = {
     const state = action.payload;
     const { payload, error } = yield call(pushSearch, state);
     if (payload && !error) {
+      alert("投稿完了です！");
       yield put(dictionaryActions.doneRegister(state));
     } else {
       yield put(dictionaryActions.failedRegister(state));

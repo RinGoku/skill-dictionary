@@ -3,4 +3,10 @@
   max-width: 800px;
   width: 85vw;
   text-align: left;
+  img {
+    max-width: 400px;
+    object-fit: cover;
+    width: 100%;
+    margin: 10px auto;
+  }
 }
