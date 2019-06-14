@@ -1,13 +1,28 @@
+@import "./themes/variable.scss";
+
+/* ふい字置き場様 https://www.webdlab.com/labs/webfont/ */
+* {
+  font-family: "Caveat", "hui", cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Caveat", "hui", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background-color: $optionColor;
+}
+code,
+code * {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace !important;
+}
+
+@font-face {
+  font-family: hui;
+  src: url("./assets/fonts/HuiFont29.ttf") format("opentype");
 }

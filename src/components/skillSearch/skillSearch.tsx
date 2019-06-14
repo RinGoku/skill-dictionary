@@ -10,7 +10,7 @@ type MainProps = OwnProps;
 
 const SkillSearch: React.SFC<MainProps> = (props: MainProps) => {
   return (
-    <section className="input-area">
+    <section className="search-area">
       <input
         type="text"
         placeholder="検索ワード"

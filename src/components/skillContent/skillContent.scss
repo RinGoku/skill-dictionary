@@ -1,0 +1,17 @@
+@import "src/themes/variable.scss";
+.title {
+  font-size: 2rem;
+}
+.tag-area {
+  display: flex;
+  max-width: 900px;
+  margin: auto;
+  padding: 10px;
+}
+.tag-chip {
+  font-size: 0.8rem;
+  background-color: $optionColor;
+  color: white;
+  border-radius: 15px;
+  padding: 3px;
+}

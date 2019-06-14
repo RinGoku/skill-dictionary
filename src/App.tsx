@@ -17,11 +17,15 @@ import { Route, Switch, RouteComponentProps, withRouter } from "react-router";
 import landing from "./components/landing/landing";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Navbar from "./components/navbar/navbar";
+import SkillInfo from "./models/skillInfo";
+import SkillContent from "./components/skillContent/skillContent";
 
 export interface MainActions {
   updateName: (v: string) => Action<string>;
+  updateTag: (v: string) => Action<string>;
   updateContent: (v: string) => Action<string>;
   updateSearchWord: (v: string) => Action<string>;
+  selectSkill: (v: SkillInfo) => Action<SkillInfo>;
   register: (v: any) => Action<any>;
   fetch: (v: any) => Action<any>;
 }
@@ -29,9 +33,11 @@ export interface MainActions {
 function mapDispatchToProps(dispatch: Dispatch<Action<any>>) {
   return {
     updateName: (v: string) => dispatch(postSkillActions.updateName(v)),
+    updateTag: (v: string) => dispatch(postSkillActions.updateTag(v)),
     updateContent: (v: string) => dispatch(postSkillActions.updateContent(v)),
     updateSearchWord: (v: string) =>
       dispatch(skillSearchActions.updateSearchWord(v)),
+    selectSkill: (v: SkillInfo) => dispatch(skillSearchActions.selectSkill(v)),
     register: (v: any) => dispatch(dictionaryActions.startRegister(v)),
     fetch: (v: any) => dispatch(dictionaryActions.startFetch(v))
   };
@@ -62,9 +68,11 @@ class App extends Component<MainProps> {
                     render={() => (
                       <PostSkill
                         name={this.props.name}
+                        tag={this.props.tag}
                         content={this.props.content}
                         updateName={this.props.updateName}
                         updateContent={this.props.updateContent}
+                        updateTag={this.props.updateTag}
                         register={this.props.register}
                       />
                     )}
@@ -90,8 +98,18 @@ class App extends Component<MainProps> {
                           fetch={this.props.fetch}
                           updateSearchWord={this.props.updateSearchWord}
                         />
-                        <SkillView list={this.props.list} />
+                        <SkillView
+                          list={this.props.list}
+                          selectSkill={this.props.selectSkill}
+                        />
                       </section>
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/skillContent"
+                    render={() => (
+                      <SkillContent skillInfo={this.props.selectedSkill} />
                     )}
                   />
                 </Switch>

@@ -4,18 +4,27 @@ import {
   dictionaryActions,
   skillSearchActions
 } from "../actions";
+import SkillInfo from "../models/skillInfo";
 
 export interface PostSkillState {
   name: string;
+  tag: string;
   content: string;
   searchWord: string;
+  selectedSkill: SkillInfo;
   list: any[];
 }
 
 const initialState: PostSkillState = {
   name: "",
+  tag: "",
   content: "",
   searchWord: "",
+  selectedSkill: {
+    name: "",
+    tag: "",
+    content: ""
+  },
   list: []
 };
 
@@ -26,8 +35,14 @@ export const rootReducer = reducerWithInitialState(initialState)
   .case(postSkillActions.updateContent, (state, content) => {
     return Object.assign({}, state, { content });
   })
+  .case(postSkillActions.updateTag, (state, tag) => {
+    return Object.assign({}, state, { tag });
+  })
   .case(skillSearchActions.updateSearchWord, (state, searchWord) => {
     return Object.assign({}, state, { searchWord });
+  })
+  .case(skillSearchActions.selectSkill, (state, selectedSkill) => {
+    return Object.assign({}, state, { selectedSkill });
   })
   .case(dictionaryActions.startRegister, (state, info: any) => {
     console.log("reducer: register start");
