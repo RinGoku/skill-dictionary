@@ -14,15 +14,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  background-color: $optionColor;
-}
 code,
 code * {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace !important;
-}
-
-@font-face {
-  font-family: hui;
-  src: url("./assets/fonts/HuiFont29.ttf") format("opentype");
 }
