@@ -55,7 +55,18 @@ const PostSkill: React.SFC<MainProps> = (props: MainProps) => {
         <div className="input-area__item">
           <Markdown markdown={props.content} />
         </div>
-        <div className="input-area__item">
+        <div className="input-area__item input-area__item--button-area">
+          <button
+            type="button"
+            className="input-area__register-button"
+            onClick={e => {
+              props.updateContent("");
+              props.updateName("");
+              props.updateTag("");
+            }}
+          >
+            クリア
+          </button>
           <button
             type="button"
             className="input-area__register-button"

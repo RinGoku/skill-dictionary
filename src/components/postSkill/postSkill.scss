@@ -11,6 +11,10 @@
   text-align: center;
   &__item {
     margin-bottom: 10px;
+    &--button-area {
+      display: flex;
+      justify-content: space-around;
+    }
   }
   &__textbox {
     border-radius: 10px;
