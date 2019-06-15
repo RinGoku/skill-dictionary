@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "skill-dictionary",
+    "skill-dictionary": "skill-dictionary"
+  }
+}
