@@ -6,7 +6,7 @@ export const pushSearch = (info: any) => {
     "Content-Type": "application/json"
   };
   return fetch(
-    "https://search-skill-dictionary-ghyqimtg5odfgwxln5tbcpnpfe.ap-northeast-1.es.amazonaws.com/.kibana/testType",
+    `${process.env.REACT_APP_ELASTIC_SERVICE_ENDPOINT}/.kibana/skill`,
     {
       method,
       headers,
@@ -32,7 +32,7 @@ export const fetchData = (queryParam: any) => {
   //     "Content-Type": "application/json"
   //   };
   return fetch(
-    `https://search-skill-dictionary-ghyqimtg5odfgwxln5tbcpnpfe.ap-northeast-1.es.amazonaws.com/.kibana/_search?q=name:${
+    `${process.env.REACT_APP_ELASTIC_SERVICE_ENDPOINT}/.kibana/_search?q=name:${
       queryParam.name
     }`
   )
