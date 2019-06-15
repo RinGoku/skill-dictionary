@@ -1,49 +1,57 @@
+var elasticsearch = require("elasticsearch");
+var client = new elasticsearch.Client({
+  host: `${process.env.REACT_APP_ELASTIC_SERVICE_ENDPOINT}`
+});
+
+/**
+ * 文書登録
+ * @param info 登録情報
+ */
 export const pushSearch = (info: any) => {
-  const method = "POST";
   const body = JSON.stringify(info);
-  const headers = {
-    Accept: "application/json",
-    "Content-Type": "application/json"
-  };
-  return fetch(
-    `${process.env.REACT_APP_ELASTIC_SERVICE_ENDPOINT}/.kibana/skill`,
-    {
-      method,
-      headers,
-      body
-    }
-  )
-    .then(res => res.json())
-    .then(payload => {
+  return client
+    .create({
+      index: "skill",
+      id: new Date().getTime(),
+      type: "skill",
+      refresh: "true",
+      body: body
+    })
+    .then((payload: any) => {
       return {
         payload
       };
     })
-    .catch(error => {
+    .catch((error: any) => {
+      console.log(error);
       return { error };
     });
 };
 
+/**
+ * 文書検索
+ * @param queryParam クエリパラメータ
+ */
 export const fetchData = (queryParam: any) => {
-  //   const method = "GET";
-  //   const body = JSON.stringify(info);
-  //   const headers = {
-  //     Accept: "application/json",
-  //     "Content-Type": "application/json"
-  //   };
-  return fetch(
-    `${process.env.REACT_APP_ELASTIC_SERVICE_ENDPOINT}/.kibana/_search?q=name:${
-      queryParam.name
-    }`
-  )
-    .then(res => res.json())
-    .then(payload => {
-      console.log({ payload });
+  return client
+    .search({
+      index: "skill",
+      body: {
+        query: {
+          multi_match: {
+            fields: ["name", "content", "tag"],
+            query: queryParam.name
+          }
+        }
+      }
+    })
+    .then((payload: any) => {
       return {
         payload
       };
     })
-    .catch(error => {
+    .catch((error: any) => {
+      console.log({ error });
       return { error };
     });
 };
