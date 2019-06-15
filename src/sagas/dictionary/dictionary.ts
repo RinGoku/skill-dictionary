@@ -19,6 +19,7 @@ const dictionarySaga = {
     console.log("dictionarySaga: register started", action.payload);
     const state = action.payload;
     const { payload, error } = yield call(fetchData, { name: state });
+    console.log(payload);
     if (payload && !error) {
       if (payload.hits && payload.hits.hits) {
         yield put(
